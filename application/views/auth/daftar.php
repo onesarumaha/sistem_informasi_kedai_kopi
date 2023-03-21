@@ -30,43 +30,53 @@
                <div class="col-lg-8">
                   <div class="card auth-card">
                      <div class="card-body p-0">
-
                         <div class="d-flex align-items-center auth-content">
-                           <div class="col-lg-7 align-self-center">
+                           <div class="col-lg-12 align-self-center">
                               <div class="p-3">
-                                 <h2 class="mb-2">Login</h2>
-                                 <p>Silahkan Login terlebih dahulu!</p>
-                               <?= $this->session->flashdata('notif'); ?>
-
-                                 <form method="POST" action="<?= base_url('auth') ?>">
+                                 <h2 class="mb-2">Daftar </h2>
+                                 <p>Buat akun anda !</p>
+                                 <form method="POST" action="<?= base_url('auth/submit_daftar') ?>">
                                     <div class="row">
-                                       <div class="col-lg-12">
+                                       <div class="col-lg-6">
                                           <div class="floating-label form-group">
-                                             <input class="floating-input form-control" type="text" placeholder=" " name="username">
+                                             <input class="floating-input form-control" type="text" placeholder=" " name="nama_lengkap" value="<?= set_value('nama_lengkap'); ?>">
+                                             <label>Nama Lengkap</label>
+                                          </div>
+                                          <?php echo form_error('nama_lengkap','<small class="text-danger pl-3">','</small>'); ?>
+                                       </div>
+                                       <div class="col-lg-6">
+                                          <div class="floating-label form-group">
+                                             <input class="floating-input form-control" type="text" placeholder=" " name="username" value="<?= set_value('username'); ?>">
                                              <label>Username</label>
                                           </div>
                                           <?php echo form_error('username','<small class="text-danger pl-3">','</small>'); ?>
                                        </div>
-                                       <div class="col-lg-12">
+                                       
+                                       <div class="col-lg-6">
                                           <div class="floating-label form-group">
                                              <input class="floating-input form-control" type="password" placeholder=" " name="password">
                                              <label>Password</label>
                                           </div>
                                           <?php echo form_error('password','<small class="text-danger pl-3">','</small>'); ?>
                                        </div>
-                                       
-                                       
+                                       <div class="col-lg-6">
+                                          <div class="floating-label form-group">
+                                             <input class="floating-input form-control" type="password" placeholder=" " name="password2">
+                                             <label>Confirm Password</label>
+                                          </div>
+                                          <?php echo form_error('password2','<small class="text-danger pl-3">','</small>'); ?>
+                                       </div>
                                     </div>
-                                    <button type="submit" class="btn btn-primary">Login</button>
+                                    <button type="submit" class="btn btn-primary">Daftar</button>
                                     <p class="mt-3">
-                                       Belum punya akun ? <a href="<?= base_url('Auth/daftar') ?>" class="text-primary">Daftar!</a>
+                                       Kembali ke <a href="<?= base_url('auth/') ?>" class="text-primary">Login </a>
                                     </p>
                                  </form>
                               </div>
                            </div>
-                           <div class="col-lg-5 content-right">
+                          <!--  <div class="col-lg-5 content-right">
                               <img src="<?= base_url('assets/PosDash/html') ?>/assets/images/login/01.png" class="img-fluid image-right" alt="">
-                           </div>
+                           </div> -->
                         </div>
                      </div>
                   </div>
