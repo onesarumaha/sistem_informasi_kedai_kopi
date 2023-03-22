@@ -4,7 +4,7 @@
             <div class="col-lg-4">
                 <div class="card card-transparent card-block card-stretch card-height border-none">
                     <div class="card-body p-0 mt-lg-2 mt-0">
-                        <h3 class="mb-3">Hi Graham, Good Morning</h3>
+                        <h3 class="mb-3">Hi, <?= $this->session->userdata('nama_lengkap')?></h3>
                         <p class="mb-0 mr-4">Your dashboard gives you views of key performance or business process.</p>
                     </div>
                 </div>
@@ -16,7 +16,7 @@
                             <div class="card-body">
                                 <div class="d-flex align-items-center mb-4 card-total-sale">
                                     <div class="icon iq-icon-box-2 bg-info-light">
-                                        <img src="../assets/images/product/1.png" class="img-fluid" alt="image">
+                                        <img src="<?= base_url('assets/PosDash/html') ?>/assets/images/product/1.png" class="img-fluid" alt="image">
                                     </div>
                                     <div>
                                         <p class="mb-2">Total Sales</p>
@@ -35,7 +35,7 @@
                             <div class="card-body">
                                 <div class="d-flex align-items-center mb-4 card-total-sale">
                                     <div class="icon iq-icon-box-2 bg-danger-light">
-                                        <img src="../assets/images/product/2.png" class="img-fluid" alt="image">
+                                        <img src="<?= base_url('assets/PosDash/html') ?>/assets/images/product/2.png" class="img-fluid" alt="image">
                                     </div>
                                     <div>
                                         <p class="mb-2">Total Cost</p>
@@ -54,7 +54,7 @@
                             <div class="card-body">
                                 <div class="d-flex align-items-center mb-4 card-total-sale">
                                     <div class="icon iq-icon-box-2 bg-success-light">
-                                        <img src="../assets/images/product/3.png" class="img-fluid" alt="image">
+                                        <img src="<?= base_url('assets/PosDash/html') ?>/assets/images/product/3.png" class="img-fluid" alt="image">
                                     </div>
                                     <div>
                                         <p class="mb-2">Product Sold</p>
