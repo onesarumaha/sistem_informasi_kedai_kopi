@@ -9,7 +9,7 @@
       <title><?= $title ?></title>
       
       <!-- Favicon -->
-      <link rel="shortcut icon" href="<?= base_url('assets/PosDash/html') ?>/assets/images/favicon.ico" />
+      <link rel="shortcut icon" href="<?= base_url('assets/PosDash/html') ?>/assets/images/logo_coffee.jpg" />
       <link rel="stylesheet" href="<?= base_url('assets/PosDash/html') ?>/assets/css/backend-plugin.min.css">
       <link rel="stylesheet" href="<?= base_url('assets/PosDash/html') ?>/assets/css/backend.css?v=1.0.0">
       <link rel="stylesheet" href="<?= base_url('assets/PosDash/html') ?>/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">

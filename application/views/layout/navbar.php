@@ -45,11 +45,11 @@
                                                       class="rounded profile-img img-fluid avatar-70">
                                               </div>
                                               <div class="p-3">
-                                                  <h5 class="mb-1">JoanDuo@property.com</h5>
-                                                  <p class="mb-0">Since 10 march, 2020</p>
+                                                  <h5 class="mb-1"><?= $this->session->userdata('nama_lengkap')?></h5>
+                                                  <p class="mb-0"><?= $this->session->userdata('level')?></p>
                                                   <div class="d-flex align-items-center justify-content-center mt-3">
                                                       <a href="<?= base_url('assets/PosDash/html') ?>/app/user-profile.html" class="btn border mr-2">Profile</a>
-                                                      <a href="<?= base_url('auth/logout')  ?>" class="btn border">Sign Out</a>
+                                                      <a href="<?= base_url('auth/logout')  ?>" class="btn border">Logout</a>
                                                   </div>
                                               </div>
                                           </div>
