@@ -35,9 +35,11 @@ class Auth extends CI_Controller {
 					'id_user' => $user['id_user'],
 				];
 				$this->session->set_userdata($data);
-				if($user['level'] == 'Admin' ) {
+				if($user['level'] == 'Kasir' ) {
 					redirect(base_url('Dashboard'));
-				}elseif($user['level'] == 'Customer') {
+				}elseif($user['level'] == 'Pelanggan') {
+					redirect(base_url('Pelanggan'));
+				}elseif($user['level'] == 'Pemilik') {
 					redirect(base_url('Dashboard'));
 				}
 			}else{
@@ -92,7 +94,7 @@ class Auth extends CI_Controller {
 				'username' => htmlspecialchars($this->input->post('username', true)),
 				'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
 
-				'level' => 'Admin'
+				'level' => 'Pelanggan'
 			];
 
 			$this->db->insert('users', $data);

@@ -11,8 +11,8 @@
 						<!-- Top Right -->
 						<div class="right-content">
 							<ul class="list-main">
-								<li><i class="ti-user"></i> <a href="#">Akun Saya</a></li>
-								<li><i class="ti-power-off"></i><a href="<?= base_url('auth') ?>">Login</a></li>
+								<li><i class="ti-user"></i> <a href="#"><?= $this->session->userdata('nama_lengkap')?></a></li>
+								<li><i class="ti-power-off"></i><a href="<?= base_url('auth/logout') ?>">Logout</a></li>
 							</ul>
 						</div>
 						<!-- End Top Right -->

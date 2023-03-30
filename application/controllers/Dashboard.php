@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Dashboard extends CI_Controller {
 	public function __construct() {
 		parent:: __construct();
-		if($this->session->userdata('level')!= "Admin" & $this->session->userdata('level')!="Customer" ) {
+		if($this->session->userdata('level')!= "Kasir" & $this->session->userdata('level')!="Pemilik" ) {
 			redirect(base_url('auth'));
 		}
 		
