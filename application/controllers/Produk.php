@@ -68,6 +68,7 @@ class Produk extends CI_Controller {
             $kategori = $this->input->post('kategori', TRUE);
             $harga = $this->input->post('harga', TRUE);
             $diskon = $this->input->post('diskon', TRUE);
+            $ket = $this->input->post('ket', TRUE);
 
 			$data = array(
 				'nama_produk' => $nama_produk,
@@ -76,7 +77,8 @@ class Produk extends CI_Controller {
 				'harga' => $harga,
 				'diskon' => $diskon,
 				'kode_produk' => $kode_produk,
-				'gambar' => $gambar
+				'gambar' => $gambar,
+				'ket' => $ket
 			);
 
 			$this->db->insert('produk', $data);

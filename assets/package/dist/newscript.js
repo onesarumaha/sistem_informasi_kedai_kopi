@@ -93,3 +93,35 @@ $('.hapus-satuan').on('click', function(e) {
 	})
 
 });
+
+const notifDataorder = $('.notif-dataorder').data('notifdataorder');
+
+if(notifDataorder) {
+	Swal.fire({
+	  title: 'Order',
+	  text:   notifDataorder,
+	  icon: 'success',
+	  confirmButtonText: 'OK'
+	});
+}
+
+$('.hapus-orderan').on('click', function(e) {
+
+	e.preventDefault();
+	const href = $(this).attr('href');
+
+	Swal.fire({
+	  title: ' Yakin',
+	  text: "Hapus Order ?",
+	  icon: 'question',
+	  showCancelButton: true,
+	  confirmButtonColor: '#3085d6',
+	  cancelButtonColor: '#d33',
+	  confirmButtonText: 'Hapus'
+	}).then((result) => {
+	  if (result.value) {
+	    document.location.href = href;
+	  }
+	})
+
+});

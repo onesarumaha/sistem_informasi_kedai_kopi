@@ -31,6 +31,7 @@ class M_produk extends CI_Model {
 				'id_satuan' => htmlspecialchars($this->input->post('satuan', true)),
 				'harga' => htmlspecialchars($this->input->post('harga', true)),
 				'diskon' => htmlspecialchars($this->input->post('diskon', true)),
+				'ket' => htmlspecialchars($this->input->post('ket', true)),
 				'gambar' => $gambar,
 
 			];

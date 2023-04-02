@@ -11,13 +11,13 @@
 										<div class="navbar-collapse">	
 											<div class="nav-inner">	
 												<ul class="nav main-menu menu navbar-nav">
-													<li class="active"><a href="#">Home</a></li>
-													<li><a href="#">Produk</a></li>				
+													<li class=""><a href="<?= base_url('pelanggan') ?>">Home</a></li>
+													<li class=""><a href="<?= base_url('pelanggan') ?>">Produk</a></li>				
 													<li><a href="#">Bukti Bayar</a></li>				
 													<li><a href="#">Histori</a></li>												
 													<li><a href="#">Keranjang<i class="ti-angle-down"></i><span class="new">New</span></a>
 														<ul class="dropdown">
-															<li><a href="cart.html">Pemesanan</a></li>
+															<li><a href="<?= base_url('pelanggan/pemesanan') ?>">Pemesanan</a></li>
 															<li><a href="checkout.html">Pembayaran</a></li>
 														</ul>
 													</li>
@@ -43,8 +43,8 @@
 					<div class="col-12">
 						<div class="bread-inner">
 							<ul class="bread-list">
-								<li><a href="index1.html">Home<i class="ti-arrow-right"></i></a></li>
-								<li class="active"><a href="blog-single.html">Shop Grid</a></li>
+								<li><a href="<?= base_url('pelanggan') ?>">Home<i class="ti-arrow-right"></i></a></li>
+								<li class="active"><a href="#"><?= $grid ?></a></li>
 							</ul>
 						</div>
 					</div>

@@ -57,5 +57,8 @@
 	<script src="<?= base_url('assets/eshop/') ?>js/easing.js"></script>
 	<!-- Active JS -->
 	<script src="<?= base_url('assets/eshop/') ?>js/active.js"></script>
+    <script src="<?= base_url('assets/') ?>package/dist/sweetalert2.all.min.js"></script>
+    <script src="<?= base_url('assets/') ?>package/dist/sweetalert2.all.js"></script>
+    <script src="<?= base_url('assets/') ?>package/dist/newscript.js"></script>
 </body>
 </html>

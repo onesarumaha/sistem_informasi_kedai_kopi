@@ -107,11 +107,19 @@
                                                           <input type="number" class="form-control" placeholder="Masukkan Harga Diskon" name="diskon" value="<?= $produk['diskon'] ?>">
 
                                                       </div>
+
+                                                      <div class="pb-3">
+                                                          <label class="mb-0">Keterangan</label>
+                                                          <textarea name="ket" class="form-control"><?= $produk['ket'] ?></textarea>
+                                                      </div>
+
                                                       <div class="custom-file">
                                                           <input type="file" class="custom-file-input" id="customFile" name="gambar">
                                                           <label class="custom-file-label" for="customFile">Ubah Gambar</label>
                                                           <img class="mt-3" height="50px" width="50"  src="<?= base_url() . '/assets/gambar/' . $produk['gambar'] ?>">
                                                        </div>
+
+
 
                                                       <div class="col-lg-12 mt-4">
                                                           <div class="d-flex flex-wrap align-items-ceter justify-content-center">
@@ -187,8 +195,14 @@
                                   <input type="number" class="form-control" placeholder="Masukkan Harga Diskon" name="diskon">
 
                               </div>
+
+                              <div class="pb-3">
+                                  <label class="mb-0">Keterangan</label>
+                                  <textarea name="ket" class="form-control"></textarea>
+                              </div>
+
                               <div class="custom-file">
-                                  <input type="file" class="custom-file-input" id="customFile" name="gambar">
+                                  <input type="file" class="custom-file-input" id="customFile" name="gambar" required>
                                   <label class="custom-file-label" for="customFile">Upload Gambar</label>
 
                                </div>
