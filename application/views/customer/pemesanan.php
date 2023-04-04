@@ -41,13 +41,15 @@
 									      <td><?= $ord['tgl'] ?></td>
 									      <td><?= $ord['nama_produk'] ?></td>
 									      <td><?= $ord['qty'] ?></td>
-									      <td>Rp. <?= number_format($ord['harga'] ) ?> -, </td>
-									      <td>Rp. <?= number_format($ord['qty'] * $ord['harga'] ) ?> -, </td>
+									      <td>Rp. <?= number_format($ord['harga'] ) ?>  </td>
+									      <td>Rp. <?= number_format( $tot = $ord['qty'] * $ord['harga'] ) ?>  </td>
 									      <td>
 									      	<a href="<?= base_url('pelanggan/hapus/') ?><?= $ord['id_order'] ?>" class="hapus-orderan"><button class="btn">Hapus</button></a>
 									      </td>
 									    </tr>
-									<?php endforeach; ?>
+									<?php 
+									@$jumlahtot += $tot; 
+								endforeach; ?>
 										<tr>
 									      <td colspan="7">
 									      	<?php if(empty($order) ) : ?>
@@ -58,6 +60,36 @@
 									      </td>
 									      
 									    </tr>
+
+									    <tr>
+									    	<th>Total Item</th>
+									    	<th>: </th>
+									    	<th>Rp. <?= number_format(@$jumlahtot) ?></th>
+									    </tr>
+									     <tr>
+									    	<th>PPN %</th>
+									    	<th>: </th>
+									    	<th>11 %</th>
+									    </tr>
+
+									    <tr>
+									    	<th>Jumlah</th>
+									    	<th>: </th>
+									    	<th>Rp. <?= number_format(@$jumlah_bayar = 0.11 *  $jumlahtot + $jumlahtot)?></th>
+									    </tr>
+
+									     <tr>
+									    	<th colspan="3">
+									    		<form action="<?= base_url('Pelanggan/submit_pesanan') ?>" method="POST">
+									    			<input type="hidden" name="id_user" value="<?= $this->session->userdata('id_user')?>">
+									    			<input type="hidden" name="id_order" value="<?= $this->session->userdata('id_user')?>">
+									    			<input type="hidden" name="jumlah_bayar" value="<?= $jumlah_bayar ?>">
+									    			<button class="btn">CHEKOUT</button>
+									    		</form>
+									    	</th>
+									    	
+									    </tr>
+
 									  </tbody>
 									</table>
 													

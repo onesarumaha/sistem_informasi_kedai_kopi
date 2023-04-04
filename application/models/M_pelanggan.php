@@ -44,6 +44,42 @@ class M_pelanggan extends CI_Model {
 
 	}
 
+	public function orderCheckout()
+	{
+
+		$data = [
+				'id_user' => htmlspecialchars($this->input->post('id_user', true)),
+				'id_order' => htmlspecialchars($this->input->post('id_user', true)),
+				'jumlah_bayar' => htmlspecialchars($this->input->post('jumlah_bayar', true)),
+				'bukti_bayar' => '-',
+
+
+		];
+		$this->db->insert('pembayaran', $data);
+
+	
+	}
+
+	public function getCheckout() 
+	{
+
+		$this->db->select('*');
+		$this->db->from('pembayaran');
+		$this->db->join('users', 'users.id_user = pembayaran.id_user');
+		$this->db->join('order_menu', 'order_menu.id_order = pembayaran.id_order');
+
+		$username = $this->session->userdata['username'];
+		$this->db->where('username', $username);
+
+		return $query = $this->db->get()->result_array();
+	}
+
+	public function hapusCekout($id) 
+	{
+
+	    $this->db->delete('pembayaran', ['id_bayar' => $id]);
+	}
+
 
 
 

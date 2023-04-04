@@ -18,7 +18,7 @@
 													<li><a href="#">Keranjang<i class="ti-angle-down"></i><span class="new">New</span></a>
 														<ul class="dropdown">
 															<li><a href="<?= base_url('pelanggan/pemesanan') ?>">Pemesanan</a></li>
-															<li><a href="checkout.html">Pembayaran</a></li>
+															<li><a href="<?= base_url('pelanggan/pembayaran') ?>">Pembayaran</a></li>
 														</ul>
 													</li>
 												</ul>
