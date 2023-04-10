@@ -9,7 +9,7 @@
                         <h4 class="mb-3">Data Produk</h4>
                         
                     </div>
-                    <a href="#" class="btn btn-primary add-list" data-toggle="modal" data-target="#new-order"><i class="las la-plus mr-3"></i>Tambah Produk</a>
+                    <a href="#" class="btn btn-primary add-list" data-toggle="modal" data-target="#new-order"><i class="las la-plus mr-3"></i>Tambah Menu</a>
                 </div>
             </div>
             <div class="col-lg-12">
@@ -36,8 +36,8 @@
                                 <div class="d-flex align-items-center">
                                     <img src="<?= base_url() . '/assets/gambar/' . $produk['gambar'] ?>" class="img-fluid rounded avatar-70 mr-3" alt="image">
                                     <div>
-                                        <?= $produk['nama_produk'] ?>
-                                        <p class="mb-0"><small><?= $produk['kode_produk'] ?></small></p>
+                                        <?= $produk['nama_menu'] ?>
+                                        <p class="mb-0"><small><?= $produk['kode_menu'] ?></small></p>
                                     </div>
                                 </div>
                             </td>
@@ -51,27 +51,27 @@
                                    <!--  <a class="badge badge-info mr-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="View"
                                         href="#"><i class="ri-eye-line mr-0"></i></a> -->
                                     <a class="badge bg-warning mr-2" data-placement="top" title="" data-original-title="Edit"
-                                        href="#" data-toggle="modal" data-target="#edit<?= $produk['id_produk']; ?>"><i class="ri-pencil-line mr-0"></i></a>
+                                        href="#" data-toggle="modal" data-target="#edit<?= $produk['id_menu']; ?>"><i class="ri-pencil-line mr-0"></i></a>
                                     <a class="badge bg-danger mr-2 hapus-produk" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete"
-                                        href="<?= base_url('produk/hapus_produk/') ?><?= $produk['id_produk']; ?>"><i class="ri-delete-bin-line mr-0"></i></a>
+                                        href="<?= base_url('produk/hapus_produk/') ?><?= $produk['id_menu']; ?>"><i class="ri-delete-bin-line mr-0"></i></a>
                                 </div>
                             </td>
                         </tr>
                         
 
-                        <div class="modal fade" id="edit<?= $produk['id_produk']; ?>" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal fade" id="edit<?= $produk['id_menu']; ?>" tabindex="-1" role="dialog" aria-hidden="true">
                                   <div class="modal-dialog modal-dialog-centered" role="document">
                                       <div class="modal-content">
-                                        <form enctype="multipart/form-data" action="<?= base_url('produk/edit_produk/') ?><?= $produk['id_produk']; ?>" method="POST"> 
-                                        <input type="hidden" name="id_produk" value="<?= $produk['id_produk']; ?>"> 
+                                        <form enctype="multipart/form-data" action="<?= base_url('Menu/edit_produk/') ?><?= $produk['id_menu']; ?>" method="POST"> 
+                                        <input type="hidden" name="id_menu" value="<?= $produk['id_menu']; ?>"> 
                                           <div class="modal-body">
                                               <div class="popup text-left">
-                                                  <h4 class="mb-3">Edit Data Produk <?= $produk['kode_produk']; ?></h4>
+                                                  <h4 class="mb-3">Edit Data Produk <?= $produk['kode_menu']; ?></h4>
                                                   <div class="content create-workform bg-body">
                                                       <div class="pb-3">
                                                           <label class="mb-0">Nama Produk</label>
-                                                          <input type="text" class="form-control" placeholder="Masukkan Nama Produk" name="nama_produk" value="<?= $produk['nama_produk'] ?>">
-                                        <?= form_error('nama_lengkap','<small class="text-danger pl-3">','</small>'); ?>
+                                                          <input type="text" class="form-control" placeholder="Masukkan Nama Produk" name="nama_menu" value="<?= $produk['nama_menu'] ?>">
+                                        <?= form_error('nama_menu','<small class="text-danger pl-3">','</small>'); ?>
 
                                                       </div>
                                                      <div class="pb-3">
@@ -109,8 +109,8 @@
                                                       </div>
 
                                                       <div class="pb-3">
-                                                          <label class="mb-0">Keterangan</label>
-                                                          <textarea name="ket" class="form-control"><?= $produk['ket'] ?></textarea>
+                                                          <label class="mb-0">Deskripsi</label>
+                                                          <textarea name="desk" class="form-control"><?= $produk['deskripsi'] ?></textarea>
                                                       </div>
 
                                                       <div class="custom-file">
@@ -151,15 +151,15 @@
 <div class="modal fade" id="new-order" tabindex="-1" role="dialog" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered" role="document">
               <div class="modal-content">
-                <form enctype="multipart/form-data" action="<?= base_url('produk/submit_produk') ?>" method="POST">  
+                <form enctype="multipart/form-data" action="<?= base_url('menu/submit_produk') ?>" method="POST">  
                   <div class="modal-body">
                       <div class="popup text-left">
-                          <h4 class="mb-3">Tambah Data Produk</h4>
+                          <h4 class="mb-3">Tambah Daftar Menu</h4>
                           <div class="content create-workform bg-body">
                               <div class="pb-3">
-                                  <label class="mb-0">Nama Produk</label>
-                                  <input type="text" class="form-control" placeholder="Masukkan Nama Produk" name="nama_produk">
-                <?= form_error('nama_produk','<small class="text-danger pl-3">','</small>'); ?>
+                                  <label class="mb-0">Nama Menu</label>
+                                  <input type="text" class="form-control" placeholder="Masukkan Nama Menu" name="nama_menu">
+                <?= form_error('nama_menu','<small class="text-danger pl-3">','</small>'); ?>
 
                               </div>
                               <div class="pb-3">
@@ -197,8 +197,8 @@
                               </div>
 
                               <div class="pb-3">
-                                  <label class="mb-0">Keterangan</label>
-                                  <textarea name="ket" class="form-control"></textarea>
+                                  <label class="mb-0">Deskripsi</label>
+                                  <textarea name="desk" class="form-control"></textarea>
                               </div>
 
                               <div class="custom-file">

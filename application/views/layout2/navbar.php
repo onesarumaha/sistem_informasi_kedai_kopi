@@ -14,7 +14,7 @@
 													<li class=""><a href="<?= base_url('pelanggan') ?>">Home</a></li>
 													<li class=""><a href="<?= base_url('pelanggan') ?>">Produk</a></li>				
 													<li><a href="#">Bukti Bayar</a></li>				
-													<li><a href="#">Histori</a></li>												
+													<li><a href="<?= base_url('pelanggan/history') ?>">Histori</a></li>												
 													<li><a href="#">Keranjang<i class="ti-angle-down"></i><span class="new">New</span></a>
 														<ul class="dropdown">
 															<li><a href="<?= base_url('pelanggan/pemesanan') ?>">Pemesanan</a></li>

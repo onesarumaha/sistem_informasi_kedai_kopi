@@ -32,7 +32,7 @@
 										</a>
 										<div class="button-head">
 											<div class="product-action">
-												<a data-toggle="modal" data-target="#exampleModal<?= $produk['id_produk'] ?>" title="Detail Menu" href="#"><i class=" ti-eye"></i><span>Detail Menu</span></a>
+												<a data-toggle="modal" data-target="#exampleModal<?= $produk['id_menu'] ?>" title="Detail Menu" href="#"><i class=" ti-eye"></i><span>Detail Menu</span></a>
 												<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Like</span></a>
 												<a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
 											</div>
@@ -42,7 +42,7 @@
 										</div>
 									</div>
 									<div class="product-content">
-										<h3><a href="product-details.html"><?= $produk['nama_produk'] ?></a></h3>
+										<h3><a href="product-details.html"><?= $produk['nama_menu'] ?></a></h3>
 										<div class="product-price">
 											<span>Rp. <?= number_format($produk['harga']) ?></span>
 										</div>
@@ -51,7 +51,7 @@
 							</div>
 
 							<!-- Modal -->
-			<div class="modal fade" id="exampleModal<?= $produk['id_produk'] ?>" tabindex="-1" role="dialog">
+			<div class="modal fade" id="exampleModal<?= $produk['id_menu'] ?>" tabindex="-1" role="dialog">
 				<div class="modal-dialog" role="document">
 					<div class="modal-content">
 						<div class="modal-header">
@@ -81,7 +81,7 @@
 								</div>
 								<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
 									<div class="quickview-content">
-										<h2> <?= $produk['nama_produk'] ?></h2>
+										<h2> <?= $produk['nama_menu'] ?></h2>
 										<div class="quickview-ratting-review">
 											<div class="quickview-ratting-wrap">
 												<div class="quickview-ratting">
@@ -99,7 +99,7 @@
 										</div>
 										<h3>Rp. <?= number_format($produk['harga']) ?> -,</h3>
 										<div class="quickview-peragraph">
-											<p><?= $produk['ket'] ?></p>
+											<p><?= $produk['deskripsi'] ?></p>
 										</div>
 											
 										<div class="quantity">
@@ -121,7 +121,7 @@
 											</div>
 											<!--/ End Input Order -->
 											 <input type="hidden" name="id_user" value="<?= $this->session->userdata('id_user')?>"> 
-											 <input type="hidden" name="id_produk" value="<?= $produk['id_produk']?>"> 
+											 <input type="hidden" name="id_menu" value="<?= $produk['id_menu']?>"> 
 										</div>
 										<div class="add-to-cart">
 											<button type="submit" class="btn">Order</button>

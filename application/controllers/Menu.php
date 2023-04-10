@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Produk extends CI_Controller {
+class Menu extends CI_Controller {
 	public function __construct() {
 		parent:: __construct();
 		$this->load->library('form_validation');
@@ -16,7 +16,7 @@ class Produk extends CI_Controller {
 
 	public function index()
 	{
-		$data['title'] = "Data Produk";
+		$data['title'] = "Data Menu";
 		$data['produks'] = $this->M_produk->getProduk();
 		$data['satuan'] = $this->M_satuan->getSatuan();
 		$data['kategori'] = $this->M_kategori->getKategori();
@@ -30,13 +30,13 @@ class Produk extends CI_Controller {
 
 	public function submit_produk()
 	{
-		$data['title'] = "Data Produk";
+		$data['title'] = "Data Menu";
 		$data['query'] = $this->db->get_where('users',['level' => $this->session->userdata('level')])->row_array();
 		$data['produks'] = $this->M_produk->getProduk();
 		$data['satuan'] = $this->M_satuan->getSatuan();
 		$data['kategori'] = $this->M_kategori->getKategori();
 
-		$this->form_validation->set_rules('nama_produk', 'Nama Produk', 'trim|required');
+		$this->form_validation->set_rules('nama_menu', 'Nama Menu', 'trim|required');
 		$this->form_validation->set_rules('satuan', 'Satuan', 'trim|required');
 		$this->form_validation->set_rules('kategori', 'Jumlah', 'trim|required');
 		$this->form_validation->set_rules('harga', 'Harga', 'trim|required');
@@ -63,27 +63,27 @@ class Produk extends CI_Controller {
         	$kode_produk = 'AIA' . random_int(1, 9) . date('imy');
             $gambar = $this->upload->data();
             $gambar = $gambar['file_name'];
-            $nama_produk = $this->input->post('nama_produk', TRUE);
+            $nama_menu = $this->input->post('nama_menu', TRUE);
             $satuan = $this->input->post('satuan', TRUE);
             $kategori = $this->input->post('kategori', TRUE);
             $harga = $this->input->post('harga', TRUE);
             $diskon = $this->input->post('diskon', TRUE);
-            $ket = $this->input->post('ket', TRUE);
+            $ket = $this->input->post('desk', TRUE);
 
 			$data = array(
-				'nama_produk' => $nama_produk,
+				'nama_menu' => $nama_menu,
 				'id_satuan' => $satuan,
 				'id_kategori' => $kategori,
 				'harga' => $harga,
 				'diskon' => $diskon,
-				'kode_produk' => $kode_produk,
+				'kode_menu' => $kode_produk,
 				'gambar' => $gambar,
-				'ket' => $ket
+				'deskripsi' => $ket
 			);
 
-			$this->db->insert('produk', $data);
+			$this->db->insert('daftar_menu', $data);
 			$this->session->set_flashdata('notif', ' Ditambahkan');
-            redirect(base_url('Produk'));
+            redirect(base_url('Menu'));
         }
 
 
@@ -119,7 +119,7 @@ class Produk extends CI_Controller {
 			
 			$this->M_produk->editProduk();
 			$this->session->set_flashdata('notif', ' Diedit');
-            redirect(base_url('produk'));
+            redirect(base_url('menu'));
 		}	
     }
 

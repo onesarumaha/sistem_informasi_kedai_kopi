@@ -7,7 +7,7 @@
 								<div class="shop-top">
 									<div class="shop-shorter">
 										<div class="single-shorter">
-											<label>DAFTAR PESANAN</label>
+											<label>HISTORY</label>
 											
 										</div>
 										<div class="single-shorter">
@@ -25,35 +25,31 @@
 									    <tr>
 									      <th scope="col">No</th>
 									      <th scope="col">Tanggal / Waktu</th>
-									      <th scope="col">Kode Order</th>
-									      <th scope="col"> Status</th>
+									      <th scope="col">Status</th>
+									      <th scope="col">Total  </th>
 									    </tr>
 									  </thead>
 									  <tbody>
 									  	<?php 
 									  	$no = 1;
-									  	foreach($order as $ord) : ?>
+									  	foreach($checkout as $ord) : ?>
 									    <tr>
 									      <th scope="row"><?= $no++ ?></th>
-									      <td><?= date('d-m-Y', strtotime($ord['tgl_order'])) ?></td>
-									      <td><a href="<?= base_url('pelanggan/detail_pesanan/') ?><?= $ord['kode_order'] ?>" class="text-primary"><?= $ord['kode_order'] ?></a></td>
+									      <td><?= date('d-m-Y H:i:s', strtotime($ord['tgl'])) ?></td>
 									      <td><?= $ord['status'] ?></td>
-									    
+									      <td>Rp. <?= number_format($ord['jumlah_bayar']) ?></td>
 									    </tr>
 									<?php endforeach; ?>
 										<tr>
 									      <td colspan="7">
 									      	<?php if(empty($order) ) : ?>
 					                  <div class="alert alert-danger" role="alert">
-					                  <center> <i style="font-size: 15px;">Pesanan Tidak Ada !</i></center>
+					                  <center> <i style="font-size: 15px;">Data Tidak Ada !</i></center>
 					                  </div>
 					                <?php endif; ?>
 									      </td>
 									      
 									    </tr>
-
-									    
-
 
 									  </tbody>
 									</table>

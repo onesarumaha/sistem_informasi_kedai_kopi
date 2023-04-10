@@ -10,12 +10,12 @@ class M_produk extends CI_Model {
 
 	public function getProduk() 
 	{
-		$this->db->order_by('id_produk', 'DESC');
+		$this->db->order_by('id_menu', 'DESC');
 
 		$this->db->select('*');
-		$this->db->from('produk');
-		$this->db->join('satuan', 'satuan.id_satuan = produk.id_satuan');
-		$this->db->join('kategori', 'kategori.id_kategori = produk.id_kategori');
+		$this->db->from('daftar_menu');
+		$this->db->join('satuan', 'satuan.id_satuan = daftar_menu.id_satuan');
+		$this->db->join('kategori', 'kategori.id_kategori = daftar_menu.id_kategori');
 
 		return $query = $this->db->get()->result_array();
 	}
@@ -26,17 +26,17 @@ class M_produk extends CI_Model {
         $gambar = $gambar['file_name'];
 
 		$data = [
-				'nama_produk' => htmlspecialchars($this->input->post('nama_produk', true)),
+				'nama_menu' => htmlspecialchars($this->input->post('nama_menu', true)),
 				'id_kategori' => htmlspecialchars($this->input->post('kategori', true)),
 				'id_satuan' => htmlspecialchars($this->input->post('satuan', true)),
 				'harga' => htmlspecialchars($this->input->post('harga', true)),
 				'diskon' => htmlspecialchars($this->input->post('diskon', true)),
-				'ket' => htmlspecialchars($this->input->post('ket', true)),
+				'deskripsi' => htmlspecialchars($this->input->post('desk', true)),
 				'gambar' => $gambar,
 
 			];
-		$this->db->where('id_produk', $this->input->post('id_produk'));
-		$this->db->update('produk', $data);
+		$this->db->where('id_menu', $this->input->post('id_menu'));
+		$this->db->update('daftar_menu', $data);
 	}
 
 	public function hapusProduk($id) 

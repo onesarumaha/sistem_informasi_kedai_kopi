@@ -146,3 +146,35 @@ $('.hapus-checkout').on('click', function(e) {
 	})
 
 });
+
+const notifDatabahan = $('.notif-databahan').data('notifdatabahan');
+
+if(notifDatabahan) {
+	Swal.fire({
+	  title: 'Bahan Baku !',
+	  text: 'Berhasil '  + notifDatabahan,
+	  icon: 'success',
+	  confirmButtonText: 'OK'
+	});
+}
+
+$('.hapus-bahan').on('click', function(e) {
+
+	e.preventDefault();
+	const href = $(this).attr('href');
+
+	Swal.fire({
+	  title: ' Yakin',
+	  text: "Hapus Bahan Baku ?",
+	  icon: 'question',
+	  showCancelButton: true,
+	  confirmButtonColor: '#3085d6',
+	  cancelButtonColor: '#d33',
+	  confirmButtonText: 'Hapus'
+	}).then((result) => {
+	  if (result.value) {
+	    document.location.href = href;
+	  }
+	})
+
+});

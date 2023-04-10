@@ -39,5 +39,6 @@
     <script src="<?= base_url('assets/') ?>package/dist/sweetalert2.all.min.js"></script>
     <script src="<?= base_url('assets/') ?>package/dist/sweetalert2.all.js"></script>
     <script src="<?= base_url('assets/') ?>package/dist/newscript.js"></script>
+    <!-- <script src="<?= base_url('assets/') ?>package/dist/bahanbaku.js"></script> -->
   </body>
 </html>

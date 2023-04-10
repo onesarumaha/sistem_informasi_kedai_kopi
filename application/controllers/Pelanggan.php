@@ -70,6 +70,24 @@ class Pelanggan extends CI_Controller {
 		$this->load->view('layout2/footer');
 	}
 
+	public function detail_pesanan($id)
+	{	
+		$data['title'] = "Detail Pesanan | Kedai Kopi Samudera";
+		$data['grid'] = "Orderan ";
+		$data['produks'] = $this->M_produk->getProduk();
+		$data['order'] = $this->M_pelanggan->getOrder();
+		$data['pesanan'] = $this->M_pelanggan->getPesanan($id);
+
+
+		$this->load->view('layout2/header', $data);
+		$this->load->view('layout2/atas');
+		$this->load->view('layout2/navbar', $data);
+		$this->load->view('layout2/sidebar');
+		$this->load->view('customer/detail_pesanan', $data);
+		$this->load->view('layout2/footer');
+		
+	}
+
 	public function hapus($id)
 	{
 		$this->M_pelanggan->hapus($id);
@@ -138,9 +156,87 @@ class Pelanggan extends CI_Controller {
 		$this->load->view('layout2/atas');
 		$this->load->view('layout2/navbar', $data);
 		$this->load->view('layout2/sidebar');
+		$this->load->view('customer/list_pembayaran',$data);
+		$this->load->view('layout2/footer');
+	}
+
+	public function hapus_pembayaran($id)
+	{
+		$this->M_pelanggan->hapusCekout($id);
+      	$this->session->set_flashdata('notif', ' Berhasil Dihapus');
+        redirect(base_url('Pelanggan/pembayaran'));
+	}
+
+	public function bayar($id)
+	{
+		$data['title'] = "Kedai Kopi Samudera";
+		$data['grid'] = "Daftar Menu  ";
+		$data['produks'] = $this->M_produk->getProduk();
+		$data['order'] = $this->M_pelanggan->getOrder();
+		$data['checkout'] = $this->M_pelanggan->getCheckout();
+		$data['bayar'] = $this->M_pelanggan->idBayar($id);
+
+
+		$this->load->view('layout2/header', $data);
+		$this->load->view('layout2/atas');
+		$this->load->view('layout2/navbar', $data);
+		$this->load->view('layout2/sidebar');
 		$this->load->view('customer/pembayaran',$data);
 		$this->load->view('layout2/footer');
 	}
+
+	public function history()
+	{
+		$data['title'] = "Kedai Kopi Samudera";
+		$data['grid'] = "Daftar Menu  ";
+		$data['produks'] = $this->M_produk->getProduk();
+		$data['order'] = $this->M_pelanggan->getOrder();
+		$data['checkout'] = $this->M_pelanggan->getCheckout();
+
+
+		$this->load->view('layout2/header', $data);
+		$this->load->view('layout2/atas');
+		$this->load->view('layout2/navbar', $data);
+		$this->load->view('layout2/sidebar');
+		$this->load->view('customer/history',$data);
+		$this->load->view('layout2/footer');
+	}
+
+	public function bukti_bayar($id)
+	{
+		$data['title'] = "Kedai Kopi Samudera";
+		$data['query'] = $this->db->get_where('users',['level' => $this->session->userdata('level')])->row_array();
+		$data['grid'] = "Upload Bukti Bayar  ";
+		$data['produks'] = $this->M_produk->getProduk();
+		$data['order'] = $this->M_pelanggan->getOrder();
+		$data['checkout'] = $this->M_pelanggan->getCheckout();
+		$data['bayar'] = $this->M_pelanggan->idBayar($id);
+
+
+		$config['upload_path']          = './assets/gambar/';
+        $config['allowed_types']        = 'gif|jpg|png|JPEG';
+        $config['max_size']             = 10000;
+        $config['max_width']            = 10000;
+        $config['max_height']           = 10000;
+
+        $this->load->library('upload', $config);
+        
+
+		if(! $this->upload->do_upload('bukti_bayar'))
+		{
+			$this->load->view('layout2/header', $data);
+			$this->load->view('layout2/atas');
+			$this->load->view('layout2/navbar', $data);
+			$this->load->view('layout2/sidebar');
+			$this->load->view('customer/pembayaran',$data);
+			$this->load->view('layout2/footer');
+		}else{
+			
+			$this->M_pelanggan->buktiBayar();
+			$this->session->set_flashdata('notif', ' Pembayaran Berhasil');
+            redirect(base_url('pelanggan'));
+		}	
+    }
 
 
 
