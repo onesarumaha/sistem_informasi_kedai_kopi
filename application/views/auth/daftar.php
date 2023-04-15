@@ -6,7 +6,7 @@
   <head>
     <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-      <title><?= $title ?></title>
+      <title><?= $title ?> - Kedai Kopi Samudera</title>
       
       <!-- Favicon -->
       <link rel="shortcut icon" href="<?= base_url('assets/PosDash/html') ?>/assets/images/logo_coffee.jpg" />

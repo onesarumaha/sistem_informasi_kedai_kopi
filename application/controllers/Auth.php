@@ -115,7 +115,7 @@ class Auth extends CI_Controller {
 
 		$this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert">
  			 Login Berhasil, Silahkan Login !</div>');
-        redirect(base_url('auth'));
+        redirect(base_url('/'));
 	}
 
 

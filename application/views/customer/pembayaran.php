@@ -21,28 +21,28 @@
 														<h4>Pembayaran</h4>
 														<h3>Upload Bukti Bayar</h3>
 													</div>
-													<form class="form" method="POST" action="<?= base_url('pelanggan/bukti_bayar/') ?><?= $bayar['id_bayar'] ?>" enctype="multipart/form-data">
+													<form class="form" method="POST" action="<?= base_url('pelanggan/bukti_bayar/') ?>" enctype="multipart/form-data">
 														<?php foreach($checkout as $cek) : ?>
 														<div class="row">
 															<div class="col-lg-6 col-12">
-																<input type="hidden" name="id_bayar" value="<?= $bayar['id_bayar'] ?>" >
-																<input type="hidden" name="id_order" value="<?= $bayar['id_order'] ?>" >
+																<input type="hidden" name="id_pembayaran" value="<?//= $bayar['id_pembayaran'] ?>" >
+																<input type="hidden" name="id_order" value="<?//= $bayar['id_order'] ?>" >
 																<div class="form-group">
 																	<label>Jumlah Bayar<span>*</span></label>
-																	<input name="name" disabled  placeholder="Rp. <?= number_format( $cek['jumlah_bayar'] )?>">
+																	<input name="name" disabled  placeholder="Rp. <?= number_format( $cek['jumlah'] )?>">
 																</div>
 															</div>
 															<div class="col-lg-6 col-12">
 																<div class="form-group">
 																	<label>Bukti Bayar<span>*</span></label>
-																	<input name="bukti_bayar" type="file" placeholder="" required>
+																	<input name="upload_bayar" type="file" placeholder="" required>
 																</div>
 															</div>
 															
 															<div class="col-12">
 																<div class="form-group button">
 																	<button type="submit" class="btn ">Upload</button>
-																	<a class="btn hapus-checkout" href="<?= base_url('pelanggan/hapus_checkout/') ?><?= $cek['id_bayar'] ?>">Batal Bayar</a>
+																	<a class="btn hapus-checkout" href="<?= base_url('pelanggan/hapus_checkout/') ?><?= $cek['id_pembayaran'] ?>">Batal Bayar</a>
 																</div>
 															</div>
 														</div>

@@ -35,9 +35,9 @@
 									  	foreach($checkout as $ord) : ?>
 									    <tr>
 									      <th scope="row"><?= $no++ ?></th>
-									      <td><?= date('d-m-Y H:i:s', strtotime($ord['tgl'])) ?></td>
+									      <td><?= date('d-m-Y H:i:s', strtotime($ord['tgl_bayar'])) ?></td>
 									      <td><?= $ord['status'] ?></td>
-									      <td>Rp. <?= number_format($ord['jumlah_bayar']) ?></td>
+									      <td>Rp. <?= number_format($ord['jumlah']) ?></td>
 									    </tr>
 									<?php endforeach; ?>
 										<tr>

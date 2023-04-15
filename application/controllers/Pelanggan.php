@@ -92,7 +92,8 @@ class Pelanggan extends CI_Controller {
 	{
 		$this->M_pelanggan->hapus($id);
       	$this->session->set_flashdata('notif', ' Berhasil Dihapus');
-        redirect(base_url('Pelanggan/pemesanan'));
+        redirect(base_url('pelanggan/pemesanan'));
+
 	}
 
 	public function submit_pesanan()
@@ -114,7 +115,7 @@ class Pelanggan extends CI_Controller {
 			$this->load->view('layout2/footer');
 		}else{
 			$this->M_pelanggan->orderCheckout();
-			$this->session->set_flashdata('notif', ' Segera Bayar');
+			$this->session->set_flashdata('notif', ' Upload Bukti Bayar');
             redirect(base_url('pelanggan/checkout'));
 		}	
 	}
@@ -237,6 +238,31 @@ class Pelanggan extends CI_Controller {
             redirect(base_url('pelanggan'));
 		}	
     }
+
+    public function tambah_pesanan($id)
+	{
+		$data['query'] = $this->db->get_where('users',['level' => $this->session->userdata('level')])->row_array();
+		$data['title'] = "Kedai Kopi Samudera";
+		$data['produks'] = $this->M_produk->getProduk();
+		$data['order'] = $this->M_pelanggan->getOrder();
+		$data['pesanan'] = $this->M_pelanggan->getPesanan($id);
+
+
+
+		if(!$this->form_validation->run() == FALSE) 
+		{
+			$this->load->view('layout2/header', $data);
+			$this->load->view('layout2/atas');
+			$this->load->view('layout2/navbar', $data);
+			$this->load->view('layout2/sidebar');
+			$this->load->view('customer/detail_pesanan', $data);
+			$this->load->view('layout2/footer');
+		}else{
+			$this->M_pelanggan->tambahPesanan();
+			$this->session->set_flashdata('notif', ' Ditambahkan dikeranjang');
+            redirect(base_url('pelanggan/detail_pesanan/'.$id));
+		}	
+	}
 
 
 

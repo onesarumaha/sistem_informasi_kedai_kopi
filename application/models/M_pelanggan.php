@@ -63,7 +63,7 @@ class M_pelanggan extends CI_Model {
 
 	public function hapus($id)
 	{
-		$this->db->delete('order_menu', ['id_order' => $id] );
+		$this->db->delete('pesanan', ['id_pesanan' => $id] );
 
 	}
 
@@ -71,10 +71,9 @@ class M_pelanggan extends CI_Model {
 	{
 
 		$data = [
-				'id_user' => htmlspecialchars($this->input->post('id_user', true)),
-				'id_order' => htmlspecialchars($this->input->post('id_user', true)),
-				'jumlah_bayar' => htmlspecialchars($this->input->post('jumlah_bayar', true)),
-				'bukti_bayar' => '-',
+				'id_order' => htmlspecialchars($this->input->post('id_order', true)),
+				'jumlah' => htmlspecialchars($this->input->post('jumlah', true)),
+				'upload_bayar' => '-',
 
 
 		];
@@ -88,11 +87,8 @@ class M_pelanggan extends CI_Model {
 
 		$this->db->select('*');
 		$this->db->from('pembayaran');
-		$this->db->join('users', 'users.id_user = pembayaran.id_user');
 		$this->db->join('order_menu', 'order_menu.id_order = pembayaran.id_order');
 
-		$username = $this->session->userdata['username'];
-		$this->db->where('username', $username);
 
 		return $query = $this->db->get()->result_array();
 	}
@@ -106,7 +102,7 @@ class M_pelanggan extends CI_Model {
 	public function idBayar($id)
 	{
 
-		return $this->db->get_where('pembayaran', ['id_bayar' => $id])->row_array();
+		return $this->db->get_where('pembayaran', ['id_pembayaran' => $id])->row_array();
 			
 
 	}
@@ -131,6 +127,20 @@ class M_pelanggan extends CI_Model {
 			];
 		$this->db->where('id_order', $this->input->post('id_order'));
 		$this->db->update('order_menu', $data2);
+	}
+
+	public function tambahPesanan()
+	{
+
+		$data_pesanan = [
+				'id_order' =>  htmlspecialchars($this->input->post('id_order', true)),
+				'id_menu' => htmlspecialchars($this->input->post('id_menu', true)),
+				'kode' => htmlspecialchars($this->input->post('kode', true)),
+				'qty' => htmlspecialchars($this->input->post('qty', true)),
+			];
+		$this->db->insert('pesanan', $data_pesanan);
+
+	
 	}
 
 
