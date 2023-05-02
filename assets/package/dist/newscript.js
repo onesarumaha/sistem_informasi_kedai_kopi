@@ -178,3 +178,57 @@ $('.hapus-bahan').on('click', function(e) {
 	})
 
 });
+
+const notifDatakeuangan = $('.notif-datakeuangan').data('notifdatakeuangan');
+
+if(notifDatakeuangan) {
+	Swal.fire({
+	  title: 'Keuangan !',
+	  text: 'Berhasil '  + notifDatakeuangan,
+	  icon: 'success',
+	  confirmButtonText: 'OK'
+	});
+}
+
+$('.hapus-uang').on('click', function(e) {
+
+	e.preventDefault();
+	const href = $(this).attr('href');
+
+	Swal.fire({
+	  title: ' Keuangan',
+	  text: "Yakin Hapus Transaksi ?",
+	  icon: 'question',
+	  showCancelButton: true,
+	  confirmButtonColor: '#3085d6',
+	  cancelButtonColor: '#d33',
+	  confirmButtonText: 'Hapus'
+	}).then((result) => {
+	  if (result.value) {
+	    document.location.href = href;
+	  }
+	})
+
+});
+
+const notifDatalun = $('.notif-datalun').data('notifdatalun');
+
+if(notifDatalun) {
+	Swal.fire({
+	  title: 'Pembayaran !',
+	  text: 'Berhasil '  + notifDatalun,
+	  icon: 'success',
+	  confirmButtonText: 'OK'
+	});
+}
+
+const notifDataantar = $('.notif-dataantar').data('notifdataantar');
+
+if(notifDataantar) {
+	Swal.fire({
+	  title: 'Pemesanan !',
+	  text: 'Berhasil '  + notifDataantar,
+	  icon: 'success',
+	  confirmButtonText: 'OK'
+	});
+}

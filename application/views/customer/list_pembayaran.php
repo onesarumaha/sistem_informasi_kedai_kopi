@@ -26,23 +26,31 @@
 									      <th scope="col">No</th>
 									      <th scope="col">Tanggal / Waktu</th>
 									      <th scope="col">Kode Order</th>
+									      <th scope="col">Pembayaran</th>
 									      <th scope="col">Total</th>
-									      <th scope="col">Aksi</th>
+									      <th scope="col">No. Meja</th>
 									    </tr>
 									  </thead>
 									  <tbody>
 									  	<?php 
 									  	$no = 1;
-									  	foreach($checkout as $ord) : ?>
+									  	foreach($bukti as $ord) : ?>
 									    <tr>
 									      <th scope="row"><?= $no++ ?></th>
-									      <td><?= date('d-m-Y', strtotime($ord['tgl'])) ?></td>
-									      <td><a href="<?= base_url('pelanggan/bayar/') ?><?= $ord['id_bayar'] ?>" style="color: blue;"><?= $ord['kode_order'] ?></a></td>
-									      <td>Rp. <?= number_format($ord['jumlah_bayar']) ?></td>
-									      
-									      <td>
-									      	<a href="<?= base_url('pelanggan/hapus_pembayaran/') ?><?= $ord['id_bayar'] ?>" class="hapus-orderan"><button class="btn">Hapus</button></a>
+									      <td><?= date('d-m-Y H:s:i', strtotime($ord['tgl_bayar'])) ?></td>
+									      <td><?= $ord['kode_order'] ?></td>
+									      <td><b><?= $ord['status'] ?></b></td>
+									      <td>Rp. <?= number_format($ord['jumlah']) ?></td>
+									       <td>
+									      	<?php if($ord['no_meja'] == 0) { ?>
+									      		<label style="color:red"> Meja Belum Dipiih !</label>
+									      	<?php }else{ ?>
+									      		<b><?= $ord['no_meja']; ?></b>
+								      		<?php } ?>
+
 									      </td>
+									      
+									     
 									    </tr>
 									<?php 
 									@$jumlahtot += $tot; 

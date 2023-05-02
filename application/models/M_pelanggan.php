@@ -93,6 +93,19 @@ class M_pelanggan extends CI_Model {
 		return $query = $this->db->get()->result_array();
 	}
 
+	public function getBuktibayar() 
+	{
+		$this->db->order_by('id_pembayaran', 'DESC');
+		$this->db->select('*');
+		$this->db->from('pembayaran');
+		$this->db->join('order_menu', 'order_menu.id_order = pembayaran.id_order');
+
+		$username = $this->session->userdata['id_user'];
+		$this->db->where('id_user', $username);
+
+		return $query = $this->db->get()->result_array();
+	}
+
 	public function hapusCekout($id) 
 	{
 
@@ -113,20 +126,31 @@ class M_pelanggan extends CI_Model {
         $gambar = $gambar['file_name'];
 
 		$data = [
-				
-				'bukti_bayar' => $gambar,
+				'tgl_bayar' =>  date('Y-m-d H:i:s'),
+				'upload_bayar' => $gambar,
 
 			];
-		$this->db->where('id_bayar', $this->input->post('id_bayar'));
+		$this->db->where('id_pembayaran', $this->input->post('id_pembayaran'));
 		$this->db->update('pembayaran', $data);
 
 		$data2 = [
-				
-				'status' => 'Lunas',
+				'no_meja' => htmlspecialchars($this->input->post('no_meja', true)),
+				'status' => htmlspecialchars($this->input->post('status', true)),
 
 			];
 		$this->db->where('id_order', $this->input->post('id_order'));
 		$this->db->update('order_menu', $data2);
+
+		$data = [
+				'tgl' =>  date('Y-m-d'),
+				'jumlah' => htmlspecialchars($this->input->post('jumlah', true)),
+				'jenis_transaksi' => 'Pendapatan',
+				'kategori' => 'Pendapatan Usaha',
+				'ket' => '-',
+
+
+		];
+		$this->db->insert('keuangan', $data);
 	}
 
 	public function tambahPesanan()

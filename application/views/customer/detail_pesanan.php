@@ -62,21 +62,12 @@
 									    </tr>
 
 									    <tr>
-									    	<th>Total Item</th>
+									    	<th>Total Bayar</th>
 									    	<th>: </th>
-									    	<th>Rp. <?= @number_format($jumlahtot) ?></th>
+									    	<th>Rp. <?= @number_format(@$jumlah_bayar = $jumlahtot) ?></th>
 									    </tr>
-									     <tr>
-									    	<th>PPN %</th>
-									    	<th>: </th>
-									    	<th>11 %</th>
-									    </tr>
+									     
 
-									    <tr>
-									    	<th>Jumlah</th>
-									    	<th>: </th>
-									    	<th>Rp. <?= number_format(@$jumlah_bayar = 0.11 *  $jumlahtot + $jumlahtot)?></th>
-									    </tr>
 
 									     <tr>
 									    	<th colspan="3">
@@ -128,8 +119,8 @@
 										</a>
 										<div class="button-head">
 											<div class="product-action">
-												<a data-toggle="modal" data-target="#exampleModal<?= $produk['id_menu'] ?>" title="Detail Menu" href="#"><i class=" ti-eye"></i><span>Detail Menu</span></a>
-												<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Like</span></a>
+												<a data-toggle="modal" data-target="#tambahPesanan<?= $produk['id_menu'] ?>" title="Detail Menu"><i class=" ti-eye"></i><span>Detail Menu</span></a>
+												<a title="Wishlist"><i class=" ti-heart "></i><span>Like</span></a>
 												<a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
 											</div>
 											<div class="product-action-2">
@@ -150,7 +141,7 @@
 
 	<?php foreach($pesanan as $psn) : ?>			
 <!-- Modal -->
-			<div class="modal fade" id="exampleModal<?= $produk['id_menu'] ?>" tabindex="-1" role="dialog">
+			<div class="modal fade" id="tambahPesanan<?= $produk['id_menu'] ?>" tabindex="-1" role="dialog">
 				<div class="modal-dialog" role="document">
 					<div class="modal-content">
 						<div class="modal-header">

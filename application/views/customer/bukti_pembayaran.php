@@ -7,7 +7,7 @@
 								<div class="shop-top">
 									<div class="shop-shorter">
 										<div class="single-shorter">
-											<label>HISTORY</label>
+											<label>BUKTI PEMBAYARAN</label>
 											
 										</div>
 										<div class="single-shorter">
@@ -24,24 +24,44 @@
 									  <thead>
 									    <tr>
 									      <th scope="col">No</th>
-									      <th scope="col">Tanggal / Waktu</th>
 									      <th scope="col">Kode Order</th>
 									      <th scope="col">Pembayaran</th>
+									      <th scope="col">Bukti Bayar</th>
 									      <th scope="col">Total  </th>
-									      <th scope="col">Option</th>
 									    </tr>
 									  </thead>
 									  <tbody>
 									  	<?php 
 									  	$no = 1;
-									  	foreach($checkout as $ord) : ?>
+									  	foreach($bukti as $ord) : ?>
 									    <tr>
 									      <th scope="row"><?= $no++ ?></th>
-									      <td><?= date('d-m-Y H:i:s', strtotime($ord['tgl_order'])) ?></td>
-									      <td><?= $ord['kode_order'] ?></td>
+									      <td>
+									      	<?php if($ord['status'] == 'Lunas') : ?>
+									      <?= $ord['kode_order'] ?>
+									      	<?php endif ?>
+									      	<?php if($ord['status'] == 'Belum Lunas') : ?>
+									      		<a href="<?= base_url('pelanggan/bayar/') ?><?= $ord['id_pembayaran'] ?>" style="color:blue"><?= $ord['kode_order'] ?></a>
+									      	<?php endif ?>
+									      	<?php if($ord['status'] == 'Tunai') : ?>
+									      		 <?= $ord['kode_order'] ?>
+									      	<?php endif ?>
+									      </td>
 									      <td><?= $ord['status'] ?></td>
+									      <td>
+									      	<?php if($ord['status'] == 'Lunas') : ?>
+									      		<img class="default-img" src="<?= base_url() . '/assets/gambar/' . $ord['upload_bayar'] ?>" height="20px" width="50px">
+									      	<?php endif ?>
+									      	<?php if($ord['status'] == 'Tunai') : ?>
+									      				Segera Bayar Dikasir !
+									      	<?php endif ?>
+
+									      	<?php if($ord['status'] == 'Belum Lunas') : ?>
+									      		<label style="color: red">Bukti Bayar Belum Ada!</label>
+									      	<?php endif ?>
+									      </td>
+									     
 									      <td>Rp. <?= number_format($ord['jumlah']) ?></td>
-									      <td><button class="btn">Detail</button></td>
 									    </tr>
 									<?php endforeach; ?>
 										<tr>

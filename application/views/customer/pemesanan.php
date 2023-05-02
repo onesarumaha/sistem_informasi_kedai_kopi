@@ -26,6 +26,7 @@
 									      <th scope="col">No</th>
 									      <th scope="col">Tanggal / Waktu</th>
 									      <th scope="col">Kode Order</th>
+									      <th scope="col"> Pembayaran</th>
 									      <th scope="col"> Status</th>
 									    </tr>
 									  </thead>
@@ -38,6 +39,7 @@
 									      <td><?= date('d-m-Y', strtotime($ord['tgl_order'])) ?></td>
 									      <td><a href="<?= base_url('pelanggan/detail_pesanan/') ?><?= $ord['kode_order'] ?>" class="text-primary"><?= $ord['kode_order'] ?></a></td>
 									      <td><?= $ord['status'] ?></td>
+									      <td><b><?= $ord['status_order'] ?><b></td>
 									    
 									    </tr>
 									<?php endforeach; ?>

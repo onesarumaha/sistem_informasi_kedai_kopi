@@ -18,16 +18,37 @@
                               <span class="ml-4">Dashboard</span>
                           </a>
                       </li>
-                      <!-- <li class="<?php echo activate_menu('produk');?> ">
-                         <a href="<?= base_url('produk') ?>" class="svg-icon">
-                              <svg class="svg-icon" id="p-dash2" width="20" height="20"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle>
-                                  <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                              </svg>
-                              <span class="ml-4">Daftar Menu</span>
+                      <li class="<?php echo activate_menu('Pemesanan');?> ">
+                         <a href="<?= base_url('Pemesanan') ?>" class="svg-icon">
+                              <svg class="svg-icon" id="p-dash16" width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                              <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+                                          </svg>
+                              <span class="ml-4">Daftar Pemesanan</span>
                               
                           </a>
                           
-                      </li> -->
+                      </li>
+
+                       <li class="<?php echo activate_menu('pembayaran');?> ">
+                         <a href="<?= base_url('pembayaran') ?>" class="svg-icon">
+                               <svg class="svg-icon" id="p-dash07" width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline>
+                                          </svg>
+                              <span class="ml-4">Pembayaran</span>
+                              
+                          </a>
+                          
+                      </li>
+                      <li class="<?php echo activate_menu('keuangan');?> ">
+                         <a href="<?= base_url('keuangan') ?>" class="svg-icon">
+                              <svg class="svg-icon" id="p-dash3" width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                              </svg>
+                              <span class="ml-4">Keuangan</span>
+                              
+                          </a>
+                          
+                      </li>
 
                        <li class=" ">
                           <a href="#category" class="collapsed" data-toggle="collapse" aria-expanded="false">
@@ -73,27 +94,6 @@
                           
                       </li>
 
-                       <li class="<?php echo activate_menu('keuangan');?> ">
-                         <a href="<?= base_url('keuangan') ?>" class="svg-icon">
-                              <svg class="svg-icon" id="p-dash3" width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                              </svg>
-                              <span class="ml-4">Keuangan</span>
-                              
-                          </a>
-                          
-                      </li>
-
-                       <li class="<?php echo activate_menu('pembayaran');?> ">
-                         <a href="<?= base_url('pembayaran') ?>" class="svg-icon">
-                               <svg class="svg-icon" id="p-dash07" width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline>
-                                          </svg>
-                              <span class="ml-4">Pembayaran</span>
-                              
-                          </a>
-                          
-                      </li>
 
 
                      
