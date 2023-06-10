@@ -42,7 +42,7 @@
 										</div>
 									</div>
 									<div class="product-content">
-										<h3><a href="product-details.html"><?= $produk['nama_menu'] ?></a></h3>
+										<h3><a href="#"><?= $produk['nama_menu'] ?></a></h3>
 										<div class="product-price">
 											<span>Rp. <?= number_format($produk['harga']) ?></span>
 										</div>
@@ -99,6 +99,7 @@
 										</div>
 										<h3>Rp. <?= number_format($produk['harga']) ?> -,</h3>
 										<div class="quickview-peragraph">
+												<b>Deskripsi :</b>
 											<p><?= $produk['deskripsi'] ?></p>
 										</div>
 											

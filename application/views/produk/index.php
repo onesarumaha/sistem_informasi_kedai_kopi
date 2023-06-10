@@ -6,7 +6,7 @@
             <div class="col-lg-12">
                 <div class="d-flex flex-wrap flex-wrap align-items-center justify-content-between mb-4">
                     <div>
-                        <h4 class="mb-3">Data Produk</h4>
+                        <h4 class="mb-3">Daftar Menu</h4>
                         
                     </div>
                     <a href="#" class="btn btn-primary add-list" data-toggle="modal" data-target="#new-order"><i class="las la-plus mr-3"></i>Tambah Menu</a>

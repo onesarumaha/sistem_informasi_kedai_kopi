@@ -37,7 +37,17 @@
 									    <tr>
 									      <th scope="row"><?= $no++ ?></th>
 									      <td><?= date('d-m-Y', strtotime($ord['tgl_order'])) ?></td>
-									      <td><a href="<?= base_url('pelanggan/detail_pesanan/') ?><?= $ord['kode_order'] ?>" class="text-primary"><?= $ord['kode_order'] ?></a></td>
+									      <td>
+									      	<?php if($ord['status'] == 'Lunas') : ?>
+									      		<?= $ord['kode_order'] ?>
+									     	 <?php endif; ?>
+									     	 <?php if($ord['status'] == 'Tunai') : ?>
+									      		<?= $ord['kode_order'] ?>
+									     	 <?php endif; ?>
+									     	 <?php if($ord['status'] == 'Belum Lunas') : ?>
+									      	<a href="<?= base_url('pelanggan/detail_pesanan/') ?><?= $ord['kode_order'] ?>" class="text-primary"><?= $ord['kode_order'] ?></a>
+									     	 <?php endif; ?>
+									      </td>
 									      <td><?= $ord['status'] ?></td>
 									      <td><b><?= $ord['status_order'] ?><b></td>
 									    

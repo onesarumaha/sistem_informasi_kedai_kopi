@@ -16,6 +16,7 @@ class M_pembayaran extends CI_Model {
 		$this->db->join('users', 'users.id_user = order_menu.id_user');
 		$this->db->where('status_order', 'Menunggu');
 
+		$this->db->where('status', 'Lunas');
 
 		return $query = $this->db->get()->result_array();
 	}
@@ -29,7 +30,7 @@ class M_pembayaran extends CI_Model {
 		$this->db->join('order_menu', 'order_menu.id_order = pesanan.id_order');
 		$this->db->join('daftar_menu', 'daftar_menu.id_menu = pesanan.id_menu');
 
-		// $this->db->where('kode', 'KOP84104');
+		// $this->db->where('status', 'Lunas');
 
 		return $query = $this->db->get()->result_array();
 	}
@@ -41,6 +42,8 @@ class M_pembayaran extends CI_Model {
 		$this->db->select('*');
 		$this->db->from('pembayaran');
 		$this->db->join('order_menu', 'order_menu.id_order = pembayaran.id_pembayaran');
+
+		$this->db->where('status', 'Tunai');
 
 		return $query = $this->db->get()->result_array();
 	}

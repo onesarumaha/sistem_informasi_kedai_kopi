@@ -28,6 +28,7 @@
 									      <th scope="col">Item</th>
 									      <th scope="col">Qty</th>
 									      <th scope="col">Harga @ </th>
+									      <th scope="col">Diskon  </th>
 									      <th scope="col">Total  </th>
 									      <th scope="col">Aksi</th>
 									    </tr>
@@ -41,7 +42,8 @@
 									      <td><?= $ord['nama_menu'] ?></td>
 									      <td><?= $ord['qty'] ?></td>
 									      <td>Rp. <?= number_format($ord['harga'] ) ?>  </td>
-									      <td>Rp. <?= number_format( @$tot = $ord['qty'] * $ord['harga'] ) ?>  </td>
+									      <td>Rp. <?= number_format($ord['diskon']) ?> </td>
+									      <td>Rp. <?= number_format( @$tot = $ord['qty'] * $ord['harga'] + $ord['diskon'] ) ?>  </td>
 									      <td>
 									      	<a href="<?= base_url('pelanggan/hapus/') ?><?= $ord['id_pesanan'] ?>" class="hapus-orderan"><button class="btn">Hapus</button></a>
 									      </td>

@@ -191,10 +191,11 @@ class Pelanggan extends CI_Controller {
 	public function history()
 	{
 		$data['title'] = "Kedai Kopi Samudera";
-		$data['grid'] = "Daftar Menu  ";
+		$data['grid'] = "History  ";
 		$data['produks'] = $this->M_produk->getProduk();
 		$data['order'] = $this->M_pelanggan->getOrder();
 		$data['checkout'] = $this->M_pelanggan->getCheckout();
+		$data['historynya'] = $this->M_pelanggan->getHistory();
 
 
 		$this->load->view('layout2/header', $data);
@@ -208,7 +209,7 @@ class Pelanggan extends CI_Controller {
 	public function bukti_pembayaran()
 	{
 		$data['title'] = "Kedai Kopi Samudera";
-		$data['grid'] = "Daftar Menu  ";
+		$data['grid'] = "Bukti Pembayaran ";
 		$data['produks'] = $this->M_produk->getProduk();
 		$data['order'] = $this->M_pelanggan->getOrder();
 		$data['checkout'] = $this->M_pelanggan->getCheckout();
@@ -242,8 +243,22 @@ class Pelanggan extends CI_Controller {
 
         $this->load->library('upload', $config);
         
+        if($this->upload->do_upload('upload_bayar'))
+		{
+			$this->load->view('layout2/header', $data);
+			$this->load->view('layout2/atas');
+			$this->load->view('layout2/navbar', $data);
+			$this->load->view('layout2/sidebar');
+			$this->load->view('customer/pembayaran',$data);
+			$this->load->view('layout2/footer');
+		}else{
+			
+			$this->M_pelanggan->buktiBayarTransfer();
+			$this->session->set_flashdata('notif', ' Pembayaran Berhasil');
+            redirect(base_url('pelanggan/bukti_pembayaran'));
+		}
 
-		if($this->upload->do_upload('upload_bayar'))
+		if(!$this->upload->do_upload('upload_bayar'))
 		{
 			$this->load->view('layout2/header', $data);
 			$this->load->view('layout2/atas');
@@ -256,7 +271,10 @@ class Pelanggan extends CI_Controller {
 			$this->M_pelanggan->buktiBayar();
 			$this->session->set_flashdata('notif', ' Pembayaran Berhasil');
             redirect(base_url('pelanggan/bukti_pembayaran'));
-		}	
+		}
+
+
+
     }
 
     public function tambah_pesanan($id)

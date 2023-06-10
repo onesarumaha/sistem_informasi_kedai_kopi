@@ -1,7 +1,7 @@
       <div class="iq-sidebar sidebar-default ">
           <div class="iq-sidebar-logo d-flex align-items-center justify-content-between">
-              <a href="../backend/index.html" class="header-logo">
-                  <img src="<?= base_url('assets/PosDash/html') ?>/assets/images/logo.png" class="img-fluid rounded-normal light-logo" alt="logo"><h5 class="logo-title light-logo ml-3">POSDash</h5>
+              <a href="<?= base_url('dashboard') ?>" class="header-logo">
+                  <img src="<?= base_url('assets/PosDash/html') ?>/assets/images/logo_coffee.jpg" class="img-fluid rounded-normal light-logo" alt="logo"><h5 class="logo-title light-logo ml-3">Kedai Kopi</h5>
               </a>
               <div class="iq-menu-bt-sidebar ml-0">
                   <i class="las la-bars wrapper-menu"></i>
@@ -18,6 +18,9 @@
                               <span class="ml-4">Dashboard</span>
                           </a>
                       </li>
+
+                      <?php if($this->session->userdata('level') == 'Kasir'):  ?>
+
                       <li class="<?php echo activate_menu('Pemesanan');?> ">
                          <a href="<?= base_url('Pemesanan') ?>" class="svg-icon">
                               <svg class="svg-icon" id="p-dash16" width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -93,6 +96,24 @@
                           </a>
                           
                       </li>
+
+                    <?php endif ?>
+
+                    <?php if($this->session->userdata('level') == 'Pemilik'):  ?>
+
+                      <li class="<?php echo activate_menu('keuangan');?> ">
+                         <a href="<?= base_url('keuangan/laporan_penjualan') ?>" class="svg-icon">
+                               <svg class="svg-icon" id="p-dash07" width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline>
+                                          </svg>
+                              <span class="ml-4">Laporan Keuangan</span>
+                              
+                          </a>
+                          
+                      </li>
+
+                    <?php endif ?>
+
 
 
 

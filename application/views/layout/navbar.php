@@ -11,8 +11,7 @@
                   </div>
                   <div class="iq-search-bar device-search">
                       <form action="#" class="searchbox">
-                          <a class="search-link" href="#"><i class="ri-search-line"></i></a>
-                          <input type="text" class="text search-input" placeholder="Search here...">
+                         <h4>Selamat Datang, <?= $this->session->userdata('username')?></h4>
                       </form>
                   </div>
                   <div class="d-flex align-items-center">
@@ -48,7 +47,7 @@
                                                   <h5 class="mb-1"><?= $this->session->userdata('nama_lengkap')?></h5>
                                                   <p class="mb-0"><?= $this->session->userdata('level')?></p>
                                                   <div class="d-flex align-items-center justify-content-center mt-3">
-                                                      <a href="<?= base_url('assets/PosDash/html') ?>/app/user-profile.html" class="btn border mr-2">Profile</a>
+                                                      <!-- <a href="<?= base_url('assets/PosDash/html') ?>/app/user-profile.html" class="btn border mr-2">Profile</a> -->
                                                       <a href="<?= base_url('auth/logout')  ?>" class="btn border">Logout</a>
                                                   </div>
                                               </div>

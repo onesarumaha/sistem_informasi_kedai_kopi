@@ -54,6 +54,20 @@ class M_keuangan extends CI_Model {
 	    $this->db->delete('keuangan', ['id_keuangan' => $id]);
 	}
 
+	public function sumPendapatan()
+	{
+		$sql = "SELECT sum(jumlah) as jumlah FROM keuangan where jenis_transaksi='Pendapatan' ";
+		$result = $this->db->query($sql);
+		return $result->row()->jumlah;
+	}
+
+	public function sumPengeluaran()
+	{
+		$sql = "SELECT sum(jumlah) as jumlah FROM keuangan where jenis_transaksi='Pengeluaran'";
+		$result = $this->db->query($sql);
+		return $result->row()->jumlah;
+	}
+
 
 
 

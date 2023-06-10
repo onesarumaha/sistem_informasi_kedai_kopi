@@ -14,9 +14,13 @@ class Pemesanan extends CI_Controller {
 
 	public function index()
 	{
-		$data['title'] = "Daftar Pembayaran";
+		$data['title'] = "Daftar Pemesanan";
 		$data['pembayaran'] = $this->M_pembayaran->getPembayaran();
 		$data['detail'] = $this->M_pembayaran->getDetailPesanan();
+
+		foreach($data['pembayaran'] as $d){
+			$data['detail'] = $this->M_pembayaran->getDetailPesanan($d['kode_order']);
+		}
 
 		$this->load->view('layout/header', $data);
 		$this->load->view('layout/sidebar');

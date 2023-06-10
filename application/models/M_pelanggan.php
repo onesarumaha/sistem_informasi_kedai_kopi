@@ -84,11 +84,24 @@ class M_pelanggan extends CI_Model {
 
 	public function getCheckout() 
 	{
-
+		// $this->db->order_by('id_pembayaran', 'DESC');
 		$this->db->select('*');
 		$this->db->from('pembayaran');
 		$this->db->join('order_menu', 'order_menu.id_order = pembayaran.id_order');
 
+
+		return $query = $this->db->get()->result_array();
+	}
+
+	public function getHistory() 
+	{
+		$this->db->order_by('id_pembayaran', 'DESC');
+		$this->db->select('*');
+		$this->db->from('pembayaran');
+		$this->db->join('order_menu', 'order_menu.id_order = pembayaran.id_order');
+		
+		$username = $this->session->userdata['id_user'];
+		$this->db->where('id_user', $username);
 
 		return $query = $this->db->get()->result_array();
 	}
@@ -151,6 +164,139 @@ class M_pelanggan extends CI_Model {
 
 		];
 		$this->db->insert('keuangan', $data);
+
+		$message = '
+			<h3 align="center">Kedai Kopi Samudera</h3>
+			<label>
+					"Teruntuk konsumen yang kami hormati. Terima banyak atas pembelian yang telah kamu lakukan. Sungguh pesanan Anda, berarti banyak bagi perkembangan bisnis kami. Selamat menikmati."
+			</label>
+				<table border="1" width="100%" cellpadding="5">
+					<tr>
+						<td width="30%">Tanggal</td>
+						<td width="70%">'.date('Y-m-d').'</td>
+					</tr>
+					<tr>
+						<td width="30%">Metode Pembayaran </td>
+						<td width="70%">'.$this->input->post("status").'</td>
+					</tr>
+					<tr>
+						<td width="30%">Total </td>
+						<td width="70%">Rp. '.number_format($this->input->post("jumlah")).'</td>
+					</tr>
+					
+				</table>
+			';
+
+		 $config = Array(
+		      	'protocol' => 'smtp',
+	            'smtp_host' => 'ssl://smtp.googlemail.com',
+	            'smtp_port' => 465,
+	            'smtp_user' => 'wantri1998@gmail.com',
+	            'smtp_pass' => 'fjjkmqvztrcfcoyf',
+	            'mailtype' => 'html',
+	            'charset' => 'iso-8859-1'
+		    );
+
+          $this->load->library('email', $config);
+          $this->email->initialize($config);
+
+          	$this->email->set_newline("\r\n");
+		    $this->email->from('wantri1998@gmail.com', 'Kedai Kopi Samudera');
+		    $this->email->to($this->input->post("email"));
+		    $this->email->subject('Pembayaran ');
+	        $this->email->message($message);
+	        // $this->email->attach('./assets/template/images/download.png');
+
+          if($this->email->send()) {
+              	// $this->session->set_flashdata('notif', ' Dikirim');
+        		// redirect	(base_url('pelanggan/bukti_pembayaran/'));
+          }
+          else {
+               show_error($this->email->print_debugger());
+          }
+	}
+
+	public function buktiBayarTransfer()
+	{
+		$gambar = $this->upload->data();
+        $gambar = $gambar['file_name'];
+
+		$data = [
+				'tgl_bayar' =>  date('Y-m-d H:i:s'),
+				'upload_bayar' => '-',
+
+			];
+		$this->db->where('id_pembayaran', $this->input->post('id_pembayaran'));
+		$this->db->update('pembayaran', $data);
+
+		$data2 = [
+				'no_meja' => htmlspecialchars($this->input->post('no_meja', true)),
+				'status' => htmlspecialchars($this->input->post('status', true)),
+
+			];
+		$this->db->where('id_order', $this->input->post('id_order'));
+		$this->db->update('order_menu', $data2);
+
+		$data = [
+				'tgl' =>  date('Y-m-d'),
+				'jumlah' => htmlspecialchars($this->input->post('jumlah', true)),
+				'jenis_transaksi' => 'Pendapatan',
+				'kategori' => 'Pendapatan Usaha',
+				'ket' => '-',
+
+
+		];
+		$this->db->insert('keuangan', $data);
+
+		$message = '
+			<h3 align="center">Kedai Kopi Samudera</h3>
+			<label>
+					"Teruntuk konsumen yang kami hormati. Terima banyak atas pembelian yang telah kamu lakukan. Sungguh pesanan Anda, berarti banyak bagi perkembangan bisnis kami. Selamat menikmati.""
+			</label>
+				<table border="1" width="100%" cellpadding="5">
+					<tr>
+						<td width="30%">Tanggal</td>
+						<td width="70%">'.date('Y-m-d').'</td>
+					</tr>
+					<tr>
+						<td width="30%">Metode Pembayaran </td>
+						<td width="70%">'.$this->input->post("status").'</td>
+					</tr>
+					<tr>
+						<td width="30%">Total </td>
+						<td width="70%">Rp. '.number_format($this->input->post("jumlah")).'</td>
+					</tr>
+					
+				</table>
+			';
+
+		 $config = Array(
+		      	'protocol' => 'smtp',
+	            'smtp_host' => 'ssl://smtp.googlemail.com',
+	            'smtp_port' => 465,
+	            'smtp_user' => 'wantri1998@gmail.com',
+	            'smtp_pass' => 'fjjkmqvztrcfcoyf',
+	            'mailtype' => 'html',
+	            'charset' => 'iso-8859-1'
+		    );
+
+          $this->load->library('email', $config);
+          $this->email->initialize($config);
+
+          	$this->email->set_newline("\r\n");
+		    $this->email->from('wantri1998@gmail.com', 'Dwi');
+		    $this->email->to($this->input->post("email"));
+		    $this->email->subject('Pembayaran ');
+	        $this->email->message($message);
+	        // $this->email->attach('./assets/template/images/download.png');
+
+          if($this->email->send()) {
+              	// $this->session->set_flashdata('notif', ' Dikirim');
+        		// redirect	(base_url('pelanggan/bukti_pembayaran/'));
+          }
+          else {
+               show_error($this->email->print_debugger());
+          }
 	}
 
 	public function tambahPesanan()

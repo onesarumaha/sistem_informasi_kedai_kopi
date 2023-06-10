@@ -10,7 +10,7 @@ class M_produk extends CI_Model {
 
 	public function getProduk() 
 	{
-		$this->db->order_by('id_menu', 'DESC');
+		$this->db->order_by('id_menu', 'ASC');
 
 		$this->db->select('*');
 		$this->db->from('daftar_menu');

@@ -10,7 +10,8 @@
 								<div class="single-widget category">
 									<h3 class="title">Kategori</h3>
 									<ul class="categor-list">
-										<li><a href="#">T-shirts</a></li>
+										<li><a href="#">Menu Kopi</a></li>
+										<li><a href="#">Menu Makanan</a></li>
 									</ul>
 								</div>
 								<!--/ End Single Widget -->

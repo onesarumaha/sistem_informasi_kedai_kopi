@@ -25,9 +25,9 @@
 									    <tr>
 									      <th scope="col">No</th>
 									      <th scope="col">Kode Order</th>
-									      <th scope="col">Pembayaran</th>
 									      <th scope="col">Bukti Bayar</th>
 									      <th scope="col">Total  </th>
+									      <th scope="col">Option  </th>
 									    </tr>
 									  </thead>
 									  <tbody>
@@ -36,18 +36,7 @@
 									  	foreach($bukti as $ord) : ?>
 									    <tr>
 									      <th scope="row"><?= $no++ ?></th>
-									      <td>
-									      	<?php if($ord['status'] == 'Lunas') : ?>
-									      <?= $ord['kode_order'] ?>
-									      	<?php endif ?>
-									      	<?php if($ord['status'] == 'Belum Lunas') : ?>
-									      		<a href="<?= base_url('pelanggan/bayar/') ?><?= $ord['id_pembayaran'] ?>" style="color:blue"><?= $ord['kode_order'] ?></a>
-									      	<?php endif ?>
-									      	<?php if($ord['status'] == 'Tunai') : ?>
-									      		 <?= $ord['kode_order'] ?>
-									      	<?php endif ?>
-									      </td>
-									      <td><?= $ord['status'] ?></td>
+									      <td><?= $ord['kode_order'] ?></td>
 									      <td>
 									      	<?php if($ord['status'] == 'Lunas') : ?>
 									      		<img class="default-img" src="<?= base_url() . '/assets/gambar/' . $ord['upload_bayar'] ?>" height="20px" width="50px">
@@ -62,6 +51,20 @@
 									      </td>
 									     
 									      <td>Rp. <?= number_format($ord['jumlah']) ?></td>
+									      <td>
+									      		<?php if($ord['status'] == 'Lunas') : ?>
+										      			Lunas
+										      	<?php endif ?>
+										      	<?php if($ord['status'] == 'Tunai') : ?>
+									      		 	Tunai
+								      			<?php endif ?>
+
+										      	<?php if($ord['status'] == 'Belum Lunas') : ?>
+										      	<a href="<?= base_url('pelanggan/bayar/') ?><?= $ord['id_pembayaran'] ?>">
+										      		<button class="btn">Bayar</button> 
+										      	<?php endif ?>
+									      	</a> 
+									      </td>
 									    </tr>
 									<?php endforeach; ?>
 										<tr>

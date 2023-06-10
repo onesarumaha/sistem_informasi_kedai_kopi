@@ -45,12 +45,6 @@
                             </td>
                         </tr>
                         
-
-                        
-
-
-
-
                     <?php endforeach ?>
                     </tbody>
                 </table>
@@ -61,7 +55,7 @@
     </div>
 </div>
 
-<?php foreach($detail as $byr) : ?>
+<?php foreach($pembayaran as $byr) : ?>
 <div class="modal fade" id="edit<?= $byr['kode_order']; ?>" tabindex="-1" role="dialog" aria-hidden="true">
                                   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                                       <div class="modal-content">
@@ -81,15 +75,29 @@
                                                           </tr>
                                                       </thead>
                                                       <tbody class="ligth-body">
-                                                        
+                                                        <?php 
+                                                    $koneksi = new mysqli("localhost","root","","skripsi8");
+
+                                                        $kode = $byr['kode_order'];
+                                                         $sql_tampil = "SELECT * FROM pesanan
+                                        JOIN order_menu ON order_menu.id_order = pesanan.id_order
+                                        JOIN daftar_menu ON daftar_menu.id_menu = pesanan.id_menu
+                                        WHERE kode_order = '$kode' ";
+                                        
+                                        $query_tampil = mysqli_query($koneksi, $sql_tampil);
+                                        $no=1;
+                                        while ($data = mysqli_fetch_array($query_tampil,MYSQLI_BOTH)) {
+
+                                                    ?>    
                                                           <tr>
                                                               
-                                                              <td><?= $byr['kode_menu'] ?></td>
-                                                              <td><?= $byr['nama_menu'] ?></td>
-                                                              <td><?= $byr['qty'] ?></td>
+                                                              <td><?= $data['kode_menu'] ?></td>
+                                                              <td><?= $data['nama_menu'] ?></td>
+                                                              <td><?= $data['qty'] ?></td>
                                                               
                                                               
                                                           </tr>
+                                                      <?php } ?>
                                                       </tbody>
                                                   </table>
                                                       

@@ -36,10 +36,14 @@
 															<div class="col-lg-6 col-12">
 																<input type="hidden" name="id_pembayaran" value="<?= $bayar['id_pembayaran'] ?>" >
 																<input type="hidden" name="id_order" value="<?= $bayar['id_order'] ?>" >
-																<div class="form-group">
+																<input type="hidden" name="jumlah" value="<?= $bayar['jumlah'] ?>">
+																<!-- <div class="form-group">
 																	<label>Jumlah Bayar<span>*</span></label>
 																	<input name="name" disabled  placeholder="Rp. <?= number_format( $bayar['jumlah'] )?>">
-																	<input type="hidden" name="jumlah" value="<?= $bayar['jumlah'] ?>">
+																</div> -->
+																<div class="form-group">
+																	<label>Email<span>*</span></label>
+																	<input type="email" name="email"  placeholder="Masukkan Email" required>
 																</div>
 															</div>
 															<div class="col-lg-6 col-12">
@@ -63,6 +67,12 @@
 																<div class="form-group button">
 																	<button type="submit" class="btn ">Upload</button>
 																	<!-- <a class="btn hapus-checkout" href="<?= base_url('pelanggan/hapus_checkout/') ?><?= $bayar['id_pembayaran'] ?>">Batal Bayar</a> -->
+
+																	<label class="float-right"><b>Total Bayar : </b>
+																		<h2 class=""><b>Rp. <?= number_format($bayar['jumlah'] ) ?> </b></h2>
+																	</label>
+																	
+																	
 																</div>
 															</div>
 														</div>
@@ -103,8 +113,8 @@
 													<li>OVO<span>Kedai Kopi Samudera | 081277260797 </span></li>
 													<li>GOPAY<span>Kedai Kopi Samudera | 081277260797</span></li>
 													<li>DANA<span>Kedai Kopi Samudera | 081277260797</span></li>
-													<li>BCA<span>Kedai Kopi Samudera | 081277260797</span></li>
-													<li>BRI<span>Kedai Kopi Samudera | 081277260797</span></li>
+													<li>SHOPEE<span>Kedai Kopi Samudera | 081277260797</span></li>
+													
 												</ul>
 											</div>
 										</div>
